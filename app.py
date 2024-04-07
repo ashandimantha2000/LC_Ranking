@@ -2,6 +2,11 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 
+st.set_page_config(
+    layout="wide",
+    page_title="LC Global Ranking",
+)
+
 st.title("Hello World!")
 x=st.text_input("Enter your name")
 st.write("Hello",x)
