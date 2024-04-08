@@ -66,24 +66,17 @@ def main():
         ('CC', 'CN', 'CS', 'Kandy', 'USJ', 'Ruhuna', 'NSBM', 'NIBM', 'Rajarata')
     )
 
-    if entity == 'CC':
-        lc_id = '222'
-    elif entity == 'CN':
-        lc_id = '872'
-    elif entity == 'CS':
-        lc_id = '1340'
-    elif entity == 'Kandy':
-        lc_id = '2204'
-    elif entity == 'USJ':
-        lc_id = '221'
-    elif entity == 'Ruhuna':
-        lc_id = '2175'
-    elif entity == 'NSBM':
-        lc_id = '2186'
-    elif entity == 'NIBM':
-        lc_id = '4535'
-    elif entity == 'Rajarata':
-        lc_id = '5490'
+    lc_id = {
+        'CC': '222',
+        'CN': '872',
+        'CS': '1340',
+        'Kandy': '2204',
+        'USJ': '221',
+        'Ruhuna': '2175',
+        'NSBM': '2186',
+        'NIBM': '4535',
+        'Rajarata': '5490'
+    }.get(entity, None)
 
     # Select status - Test
     status = st.selectbox(
@@ -163,7 +156,17 @@ def main():
         valueoGT = [value for value in data['o_applied_8'].values()][0]
         valueoGTe = [value for value in data['o_applied_9'].values()][0]
             # st.write(value)
-        
+
+        # regex_list = [
+        #     # {"name": "Total", "pattern": r"^.*_total$"},
+        #     {"name": "oGV", "pattern": r"^o_.*_[7]$"},
+        #     {"name": "oGTa", "pattern": r"^o_.*_[8]$"},
+        #     {"name": "oGTe", "pattern": r"^o_.*_[9]$"},
+
+        #     {"name": "iGV", "pattern": r"^i_.*_[7]$"},
+        #     {"name": "iGTa", "pattern": r"^i_.*_[8]$"},
+        #     {"name": "iGTe", "pattern": r"^i_.*_[9]$"}
+        # ]
         
         # Visualize data using bar chart
         labels = [key for key in data['i_applied_8'] ]
@@ -185,7 +188,6 @@ def main():
 
         # st.plotly_chart(fig)
 
-        
         
         #visualize entity on a bar chart by Product    
         x_values = ['iGV', 'iGT', 'iGTe', 'oGV', 'oGT', 'oGTe']
