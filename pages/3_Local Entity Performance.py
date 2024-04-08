@@ -198,7 +198,7 @@ def main():
         #metric
         # st.metric(label="Applied", value=value)
 
-        fig.update_layout(title='LC Global Ranking by Product',
+        fig.update_layout(title='Productwise Local Entity Performances',
             xaxis_title='Product',
             yaxis_title='Global Rank')
 
