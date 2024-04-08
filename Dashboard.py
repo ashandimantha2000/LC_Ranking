@@ -15,9 +15,9 @@ def main():
     st.success('📊 Entity Performance: Analyze the performance of products and local entities of AIESEC in Sri Lanka.')
 
     st.title('Limitations')
-    st.warning("⏳ Retrieving Data: Currently, only LCs (Local Committees) of AIESEC in Sri Lanka are accessible. Including global entities in the ranking requires more time to retrieve data from the Expa API.")
+    st.warning("⏳ Currently, only LCs (Local Committees) of AIESEC in Sri Lanka are accessible. Including global entities in the ranking requires more time to retrieve data from the Expa API. Can just add the global entities to the app by inserting the office_id/lc_id in the python data list")
     st.warning("⌛ Data Retrieval Time: The data is retrieved from the Expa API, which may take some time. Please be patient while the data is being fetched.")
-    st.warning("⌛ Currently this application is works only for the 'Applied' state of the funnel.")
+    st.warning("⌛ Currently this application is works only for the 'Applied' state of the funnel. ")
 
     st.markdown('---')
     st.subheader('About the Developer')

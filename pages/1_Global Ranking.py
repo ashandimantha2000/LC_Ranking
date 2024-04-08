@@ -36,25 +36,12 @@ def main():
         ('Applied', '')
     )
 
-    # Select entity
-    # entity = st.selectbox(
-    #     'Entity',
-    #     ('CC', 'CN', 'CS', 'Kandy', 'USJ', 'Ruhuna', 'NSBM', 'NIBM', 'Rajarata')
-    # )
 
     #defining entity ids
     entity_id = ['222', '872', '1340', '2204', '221', '2175', '2186', '4535', '5490']
 
     #defining entity ids
-    cc_id = '222'
-    cn_id = '872'
-    cs_id = '1340'
-    kandy_id = '2204'
-    usj_id = '221'
-    ruhuna_id = '2175'
-    nsbm_id = '2186'
-    nibm_id = '4535'
-    rajarata_id = '5490'
+
 
     #select start date
     sd = st.date_input("Start Date", datetime.date(2023, 12, 31))

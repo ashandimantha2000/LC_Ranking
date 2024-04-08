@@ -162,19 +162,9 @@ def main():
         valueoGTe = [value for value in data['o_applied_9'].values()][0]
             # st.write(value)
 
-        # regex_list = [
-        #     # {"name": "Total", "pattern": r"^.*_total$"},
-        #     {"name": "oGV", "pattern": r"^o_.*_[7]$"},
-        #     {"name": "oGTa", "pattern": r"^o_.*_[8]$"},
-        #     {"name": "oGTe", "pattern": r"^o_.*_[9]$"},
 
-        #     {"name": "iGV", "pattern": r"^i_.*_[7]$"},
-        #     {"name": "iGTa", "pattern": r"^i_.*_[8]$"},
-        #     {"name": "iGTe", "pattern": r"^i_.*_[9]$"}
-        # ]
-        
         # Visualize data using bar chart
-        labels = [key for key in data['i_applied_8'] ]
+        # labels = [key for key in data['i_applied_8'] ]
         #get the count of i_applied_8 from data
         # values = [value for value in data['i_applied_8'].values()]
                 
