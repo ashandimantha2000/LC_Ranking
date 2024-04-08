@@ -9,7 +9,7 @@ import plotly.graph_objects as go
 
 st.set_page_config(
     layout="wide",
-    page_title="Local Entity Global Rankings",
+    page_title="Local Entity Rankings",
 )
 
 # Function to retrieve data from the API
@@ -58,11 +58,13 @@ def main():
 
     #select start date
     sd = st.date_input("Start Date", datetime.date(2023, 12, 31))
-    st.write('Start Date:', sd)
+    # st.write('Start Date:', sd)
 
     #select end date
     ed = st.date_input("End Date", datetime.date(2024, 1, 31))
-    st.write('End Date:', ed)
+    # st.write('End Date:', ed)
+
+    st.write('Please Wait! 🙏 Data loading from the API may take a few minutes.😩')
 
     # Define API URL with parameters
     api_url = 'https://analytics.api.aiesec.org/v2/applications/analyze.json'
@@ -110,18 +112,28 @@ def main():
     x_values = ['CC', 'CN', 'CS', 'Kandy', 'USJ', 'Ruhuna', 'NSBM', 'NIBM', 'Rajarata']
     y_values = entity_values
 
+    # Sort the entity_values and x_values in descending order
+    sorted_values, sorted_entities = zip(*sorted(zip(y_values, x_values), reverse=True))
+
+    # Preview the rank of the entities
+    for rank, entity in enumerate(sorted_entities, start=1):
+        st.write(f"Rank {rank}: {entity}")
+
     fig = go.Figure(data=[go.Bar(x=x_values, y=y_values)])
 
-    #entity title
+    #chart title
     st.title(function) 
     #metric
     # st.metric(label="Applied", value=value)
 
-    fig.update_layout(title='Local Entity Global Ranking',
+    fig.update_layout(title='Local Entity National Ranking',
         xaxis_title='Product',
-        yaxis_title='Global Rank')
+        yaxis_title='National Rank')
 
     st.plotly_chart(fig)
+
+    #rank entity_values
+    
 
     # Retrieve data from the API
     data = get_api_data(url)

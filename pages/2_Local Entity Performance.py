@@ -86,11 +86,11 @@ def main():
     
     #select start date
     sd = st.date_input("Start Date", datetime.date(2023, 12, 31))
-    st.write('Start Date:', sd)
+    # st.write('Start Date:', sd)
 
     #select end date
     ed = st.date_input("End Date", datetime.date(2024, 1, 31))
-    st.write('End Date:', ed)
+    # st.write('End Date:', ed)
 
 
 
