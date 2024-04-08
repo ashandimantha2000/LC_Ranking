@@ -2,6 +2,10 @@ import streamlit as st
 
 # Main function to run Streamlit app
 def main():
+    st.set_page_config(
+    layout="wide",
+    page_title="Dashboard - Local Entity Global Rankings",
+)
     st.title('Hey AIESEC in Sri Lanka 💙')
 
     st.write('Welcome to the AIESEC in Sri Lanka Local Entity Global Rankings. Here, you can explore and compare the performance of Local Committees (LCs) of AIESEC in Sri Lanka.')
