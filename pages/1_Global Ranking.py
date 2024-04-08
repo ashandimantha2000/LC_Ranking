@@ -115,9 +115,9 @@ def main():
     #metric
     # st.metric(label="Applied", value=value)
 
-    fig.update_layout(title='Local Entity Global Ranking',
+    fig.update_layout(title='',
         xaxis_title='Product',
-        yaxis_title='Global Rank')
+        yaxis_title='Applied')
 
     st.plotly_chart(fig)
 
