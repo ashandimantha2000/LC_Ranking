@@ -207,7 +207,7 @@ def main():
 
         fig.update_layout(title='Productwise Local Entity Performances',
             xaxis_title='Product',
-            yaxis_title='Global Rank')
+            yaxis_title='Applied')
 
         st.plotly_chart(fig)
 
