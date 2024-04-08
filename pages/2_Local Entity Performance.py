@@ -23,6 +23,7 @@ def get_api_data(url):
 def main():
     st.title('Local Entity Performance')
 
+
     # Select function
     # option = st.selectbox(
     #     'Function',
@@ -107,6 +108,10 @@ def main():
 
     # Retrieve data from the API
     data = get_api_data(url)
+
+    # Retrieve data from the API Spinner
+    with st.spinner("Please Wait!  Data loading from the API may take a few minutes."):
+        data = get_api_data(url)
 
     
     # Check if data is retrieved successfully
