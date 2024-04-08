@@ -8,7 +8,7 @@ import json
 
 st.set_page_config(
     layout="wide",
-    page_title="LC Global Ranking",
+    page_title="Local Entity Performance",
 )
 
 # Function to retrieve data from the API
@@ -21,7 +21,7 @@ def get_api_data(url):
 
 # Main function to run Streamlit app
 def main():
-    st.title('Local Entity Global Ranking')
+    st.title('Local Entity Performance')
 
     # Select function
     # option = st.selectbox(
@@ -37,17 +37,12 @@ def main():
 
 
     # Select function - test
-    function = st.selectbox(
-        'Function',
-        ('iGV', 'iGT', 'iGTe', 'oGV', 'oGT', 'oGTe')
-    )
+    # function = st.selectbox(
+    #     'Function',
+    #     ('iGV', 'iGT', 'iGTe', 'oGV', 'oGT', 'oGTe')
+    # )
 
-    # Select status - Test
-    status = st.selectbox(
-        'status',
-        ('Applied', '')
-    )
-
+    
    
     #Functional Parsing
     # if option == 'iGV':
@@ -90,6 +85,11 @@ def main():
     elif entity == 'Rajarata':
         lc_id = '5490'
 
+    # Select status - Test
+    status = st.selectbox(
+        'Status',
+        ('Applied', '')
+    )
     
     #select start date
     sd = st.date_input("Start Date", datetime.date(2023, 12, 31))
@@ -98,6 +98,8 @@ def main():
     #select end date
     ed = st.date_input("End Date", datetime.date(2024, 1, 31))
     st.write('End Date:', ed)
+
+
 
 
     # Define API URL with parameters
