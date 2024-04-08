@@ -17,11 +17,12 @@ def main():
     st.title('Limitations')
     st.warning("⏳ Retrieving Data: Currently, only LCs (Local Committees) of AIESEC in Sri Lanka are accessible. Including global entities in the ranking requires more time to retrieve data from the Expa API.")
     st.warning("⌛ Data Retrieval Time: The data is retrieved from the Expa API, which may take some time. Please be patient while the data is being fetched.")
+    st.warning("⌛ Currently this application is works only for the 'Applied' state of the funnel.")
 
     st.markdown('---')
     st.subheader('About the Developer')
     # st.image('https://avatars.githubusercontent.com/u/85834813?v=4', width=200)
-    st.write('Hello! I am Ashan Dimantha Herath, MCVP Applicant 24.25 at AIESEC in Sri Lanka.')
+    st.write('Hello! I am Ashan Dimantha Herath, MCVP Applicant 24.25 for AIESEC in Sri Lanka.')
     st.write('If you have any questions or feedback about this application, please reach out to me:')
     st.write(' Website: https://ashandimantha.vercel.app/')
     st.write(' Email: ashan.herath16@aiesec.net')
