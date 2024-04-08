@@ -64,7 +64,8 @@ def main():
     ed = st.date_input("End Date", datetime.date(2024, 1, 31))
     # st.write('End Date:', ed)
 
-    st.write('Please Wait! 🙏 Data loading from the API may take a few minutes.😩')
+    st.write('This may take more than a minute to load the data from the API. Please wait...')
+
 
     # Define API URL with parameters
     api_url = 'https://analytics.api.aiesec.org/v2/applications/analyze.json'
@@ -77,6 +78,10 @@ def main():
     # Retrieve data from the API
     data = get_api_data(url)
 
+    # Retrieve data from the API Spinner
+    with st.spinner("Please Wait!  Data loading from the API may take a few minutes."):
+        data = get_api_data(url)
+    
     #geting the count of LCs
     lc_list = ['CC', 'CN', 'CS', 'Kandy', 'USJ', 'Ruhuna', 'NSBM', 'NIBM', 'Rajarata']
     length = len(lc_list)
@@ -115,10 +120,7 @@ def main():
     # Sort the entity_values and x_values in descending order
     sorted_values, sorted_entities = zip(*sorted(zip(y_values, x_values), reverse=True))
 
-    # Preview the rank of the entities
-    for rank, entity in enumerate(sorted_entities, start=1):
-        st.write(f"Rank {rank}: {entity}")
-
+    
     fig = go.Figure(data=[go.Bar(x=x_values, y=y_values)])
 
     #chart title
@@ -126,23 +128,35 @@ def main():
     #metric
     # st.metric(label="Applied", value=value)
 
-    fig.update_layout(title='Local Entity National Ranking',
+    fig.update_layout(title='Local Entity Global Ranking',
         xaxis_title='Product',
-        yaxis_title='National Rank')
+        yaxis_title='Global Rank')
 
     st.plotly_chart(fig)
+
+    st.write('The following is the ranking of the Local Entities based on the selected function and status.')
+
+    # Preview the rank of the entities
+    for rank, entity in enumerate(sorted_entities, start=1):
+        st.info(f"Rank {rank}: {entity}")
+
 
     #rank entity_values
     
 
     # Retrieve data from the API
     data = get_api_data(url)
+    # Retrieve data from the API
 
+    
     # Check if data is retrieved successfully
     if data:
         st.write('Data retrieved successfully!')
     else:
         st.error('Failed to retrieve data from the API')
+    
+     
+    
 
 if __name__ == "__main__":
     main()
