@@ -24,22 +24,15 @@ def main():
     st.title('Local Entity Global Rankings')
 
     # Select function
-    # option = st.selectbox(
-    #     'Function',
-    #     ('iGV', 'iGT', 'iGTe', 'oGV', 'oGT', 'oGTe')
-    # )
+    product = st.selectbox(
+        'Function',
+        ('iGV', 'iGT', 'iGTe', 'oGV', 'oGT', 'oGTe')
+    )
 
     # Select status
     # status = st.selectbox(
     #     'status',
     #     ('Applied', 'Approved', 'iGTe', 'oGV', 'oGT', 'oGTe')
-    # )
-
-
-    # Select function - test
-    # function = st.selectbox(
-    #     'Function',
-    #     ('iGV', 'iGT', 'iGTe', 'oGV', 'oGT', 'oGTe')
     # )
 
     
@@ -61,29 +54,29 @@ def main():
 
 
     # Select entity
-    entity = st.selectbox(
-        'Entity',
-        ('CC', 'CN', 'CS', 'Kandy', 'USJ', 'Ruhuna', 'NSBM', 'NIBM', 'Rajarata')
-    )
+    # entity = st.selectbox(
+    #     'Entity',
+    #     ('CC', 'CN', 'CS', 'Kandy', 'USJ', 'Ruhuna', 'NSBM', 'NIBM', 'Rajarata')
+    # )
 
-    if entity == 'CC':
-        lc_id = '222'
-    elif entity == 'CN':
-        lc_id = '872'
-    elif entity == 'CS':
-        lc_id = '1340'
-    elif entity == 'Kandy':
-        lc_id = '2204'
-    elif entity == 'USJ':
-        lc_id = '221'
-    elif entity == 'Ruhuna':
-        lc_id = '2175'
-    elif entity == 'NSBM':
-        lc_id = '2186'
-    elif entity == 'NIBM':
-        lc_id = '4535'
-    elif entity == 'Rajarata':
-        lc_id = '5490'
+    # if entity == 'CC':
+    #     lc_id = '222'
+    # elif entity == 'CN':
+    #     lc_id = '872'
+    # elif entity == 'CS':
+    #     lc_id = '1340'
+    # elif entity == 'Kandy':
+    #     lc_id = '2204'
+    # elif entity == 'USJ':
+    #     lc_id = '221'
+    # elif entity == 'Ruhuna':
+    #     lc_id = '2175'
+    # elif entity == 'NSBM':
+    #     lc_id = '2186'
+    # elif entity == 'NIBM':
+    #     lc_id = '4535'
+    # elif entity == 'Rajarata':
+    #     lc_id = '5490'
 
     # Select status - Test
     status = st.selectbox(
@@ -105,7 +98,7 @@ def main():
     # Define API URL with parameters
     api_url = 'https://analytics.api.aiesec.org/v2/applications/analyze.json'
     access_token = '0b085db925bfe08eb8b7acbe9c53eefd26fbe6347cb943ac1da87b1204e5c8db'
-    # lc_id = '1623'
+    lc_id = '1623'
     products='Total'
     
 
@@ -155,6 +148,9 @@ def main():
         #     valueoGTe = [value for value in data['o_applied_9'].values()][0]
         #     # st.write(value)
         
+        values = [value for value in data['i_applied_7'].values()]
+        value = values[0]
+
 
         valueiGV = [value for value in data['i_applied_7'].values()][0]
         valueiGT = [value for value in data['i_applied_8'].values()][0]
@@ -188,17 +184,17 @@ def main():
         
         
         #visualize entity on a bar chart by Product    
-        x_values = ['iGV', 'iGT', 'iGTe', 'oGV', 'oGT', 'oGTe']
+        x_values = ['CC', 'CN', 'CS', 'Kandy', 'USJ', 'Ruhuna', 'NSBM', 'NIBM', 'Rajarata']
         y_values = [valueiGV, valueiGT, valueiGTe, valueoGV, valueoGT, valueoGTe]  
 
         fig = go.Figure(data=[go.Bar(x=x_values, y=y_values)])
 
         #entity title
-        st.title(entity) 
+        st.title(product) 
         #metric
         # st.metric(label="Applied", value=value)
 
-        fig.update_layout(title='LC Global Ranking by Product',
+        fig.update_layout(title='Local Entity Global Ranking',
             xaxis_title='Product',
             yaxis_title='Global Rank')
 
