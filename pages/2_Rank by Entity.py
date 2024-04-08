@@ -108,7 +108,7 @@ def main():
     
 
     # Construct the complete URL
-    url = f"{api_url}?access_token={access_token}&start_date={sd}&end_date={ed}&performance_v3%5Boffice_id%5D={lc_id}&products={function}&Entity={entity}"
+    url = f"{api_url}?access_token={access_token}&start_date={sd}&end_date={ed}&performance_v3%5Boffice_id%5D={lc_id}&products={products}"
 
     # Retrieve data from the API
     data = get_api_data(url)
@@ -131,33 +131,36 @@ def main():
         #     st.write(value)
 
         #function check
-        if function == 'iGV':
-            #get the count of o_applied_8 from data
-            values = [value for value in data['i_applied_7'].values()]
-            value = values[0]
-            st.write(value)
-        elif function == 'iGT':
-            values = [value for value in data['i_applied_8'].values()]
-            value = values[0]
-            st.write(value)
-        elif function == 'iGTe':
-            values = [value for value in data['i_applied_8'].values()]
-            value = values[0]
-            st.write(value)
-        elif function == 'oGV':
-            values = [value for value in data['o_applied_7'].values()]
-            value = values[0]
-            st.write(value)
-        elif function == 'oGT':
-            values = [value for value in data['o_applied_8'].values()]
-            value = values[0]
-            st.write(value)
-        elif function == 'oGTe':
-            values = [value for value in data['o_applied_9'].values()]
-            value = values[0]
-            st.write(value)
-            
+        # if function == 'iGV':
+        #     #get the count of o_applied_8 from data
+        #     # values = [value for value in data['i_applied_7'].values()]
+        #     # value = values[0]
+        #     valueiGV = [value for value in data['i_applied_7'].values()][0]
+        #     # st.write(value)
+        # elif function == 'iGT':
+        #     valueiGT = [value for value in data['i_applied_8'].values()][0]
+        #     # st.write(value)
+        # elif function == 'iGTe':
+        #     valueiGTe = [value for value in data['i_applied_8'].values()][0]
+        #     # st.write(value)
+        # elif function == 'oGV':
+        #     valueoGV = [value for value in data['o_applied_7'].values()][0]
+        #     # st.write(value)
+        # elif function == 'oGT':
+        #     valueoGT = [value for value in data['o_applied_8'].values()][0]
+        #     # st.write(value)
+        # elif function == 'oGTe':
+        #     valueoGTe = [value for value in data['o_applied_9'].values()][0]
+        #     # st.write(value)
+        
 
+        valueiGV = [value for value in data['i_applied_7'].values()][0]
+        valueiGT = [value for value in data['i_applied_8'].values()][0]
+        valueiGTe = [value for value in data['i_applied_8'].values()][0]
+        valueoGV = [value for value in data['o_applied_7'].values()][0]
+        valueoGT = [value for value in data['o_applied_8'].values()][0]
+        valueoGTe = [value for value in data['o_applied_9'].values()][0]
+            # st.write(value)
         
         
         # Visualize data using bar chart
@@ -180,16 +183,19 @@ def main():
 
         # st.plotly_chart(fig)
 
-        #metric
-        st.metric(label="Applied", value=value)
+        
         
         #visualize entity on a bar chart by Product    
         x_values = ['iGV', 'iGT', 'iGTe', 'oGV', 'oGT', 'oGTe']
-        y_values = [value, 2, 12, 10, 2, 3]  
+        y_values = [valueiGV, valueiGT, valueiGTe, valueoGV, valueoGT, valueoGTe]  
 
         fig = go.Figure(data=[go.Bar(x=x_values, y=y_values)])
 
+        #entity title
         st.title(entity) 
+        #metric
+        # st.metric(label="Applied", value=value)
+
         fig.update_layout(title='LC Global Ranking by Product',
             xaxis_title='Product',
             yaxis_title='Global Rank')
