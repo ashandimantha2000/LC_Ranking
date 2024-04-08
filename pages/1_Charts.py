@@ -39,7 +39,7 @@ def main():
     # Select function - test
     function = st.selectbox(
         'Function',
-        ('iGV', ' ')
+        ('iGV', 'iGT', 'iGTe', 'oGV', 'oGT', 'oGTe')
     )
 
     # Select status - Test
@@ -97,12 +97,47 @@ def main():
     # Check if data is retrieved successfully
     if data:
         st.write('Data retrieved successfully!')
+        
+        #status check
+        # if status == 'Applied':
+        #     #get the count of i_applied_8 from data
+        #     values = [value for value in data['i_applied_8'].values()]
+        #     value = values[0]
+        #     st.write(value)
+        # elif status == 'Realized':
+        #     #get the count of i_applied_9 from data
+        #     values = [value for value in data['i_realized_9'].values()]
+        #     value = values[0]
+        #     st.write(value)
 
-    
-        #get the count of i_applied_8 from data
-        values = [value for value in data['i_applied_8'].values()]
-        value = values[0]
-        st.write(value)
+        #function check
+        if function == 'iGV':
+            #get the count of o_applied_8 from data
+            values = [value for value in data['i_applied_7'].values()]
+            value = values[0]
+            st.write(value)
+        elif function == 'iGT':
+            values = [value for value in data['i_applied_8'].values()]
+            value = values[0]
+            st.write(value)
+        elif function == 'iGTe':
+            values = [value for value in data['i_applied_8'].values()]
+            value = values[0]
+            st.write(value)
+        elif function == 'oGV':
+            values = [value for value in data['o_applied_7'].values()]
+            value = values[0]
+            st.write(value)
+        elif function == 'oGT':
+            values = [value for value in data['o_applied_8'].values()]
+            value = values[0]
+            st.write(value)
+        elif function == 'oGTe':
+            values = [value for value in data['o_applied_9'].values()]
+            value = values[0]
+            st.write(value)
+            
+
         
         
         # Visualize data using bar chart
@@ -125,9 +160,12 @@ def main():
 
         # st.plotly_chart(fig)
 
-        #visualize entity on a bar chart by Product
+        #metric
+        st.metric(label="iGV Applied", value=value)
+        
+        #visualize entity on a bar chart by Product    
         x_values = ['iGV', 'iGT', 'iGTe', 'oGV', 'oGT', 'oGTe']
-        y_values = [6, 2, 12, 10, 2, 3]  
+        y_values = [value, 2, 12, 10, 2, 3]  
 
         fig = go.Figure(data=[go.Bar(x=x_values, y=y_values)])
 
@@ -136,6 +174,7 @@ def main():
             yaxis_title='Ranking')
 
         st.plotly_chart(fig)
+
    
     else:
         st.error('Failed to retrieve data from the API')

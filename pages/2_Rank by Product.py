@@ -70,6 +70,26 @@ def main():
         'Entity',
         ('CC', 'CN', 'CS', 'Kandy', 'USJ', 'Ruhuna', 'NSBM', 'NIBM', 'Rajarata')
     )
+
+    if entity == 'CC':
+        lc_id = '222'
+    elif entity == 'CN':
+        lc_id = '872'
+    elif entity == 'CS':
+        lc_id = '1340'
+    elif entity == 'Kandy':
+        lc_id = '2204'
+    elif entity == 'USJ':
+        lc_id = '221'
+    elif entity == 'Ruhuna':
+        lc_id = '2175'
+    elif entity == 'NSBM':
+        lc_id = '2186'
+    elif entity == 'NIBM':
+        lc_id = '4535'
+    elif entity == 'Rajarata':
+        lc_id = '5490'
+
     
     #select start date
     sd = st.date_input("Start Date", datetime.date(2023, 12, 31))
@@ -83,12 +103,12 @@ def main():
     # Define API URL with parameters
     api_url = 'https://analytics.api.aiesec.org/v2/applications/analyze.json'
     access_token = '0b085db925bfe08eb8b7acbe9c53eefd26fbe6347cb943ac1da87b1204e5c8db'
-    country_id = '1623'
+    # lc_id = '1623'
     products='Total'
     
 
     # Construct the complete URL
-    url = f"{api_url}?access_token={access_token}&start_date={sd}&end_date={ed}&performance_v3%5Boffice_id%5D={country_id}&products={function}&Entity={entity}"
+    url = f"{api_url}?access_token={access_token}&start_date={sd}&end_date={ed}&performance_v3%5Boffice_id%5D={lc_id}&products={function}&Entity={entity}"
 
     # Retrieve data from the API
     data = get_api_data(url)
@@ -161,7 +181,7 @@ def main():
         # st.plotly_chart(fig)
 
         #metric
-        st.metric(label="Global Ranking", value=value)
+        st.metric(label="Applied", value=value)
         
         #visualize entity on a bar chart by Product    
         x_values = ['iGV', 'iGT', 'iGTe', 'oGV', 'oGT', 'oGTe']
@@ -169,9 +189,10 @@ def main():
 
         fig = go.Figure(data=[go.Bar(x=x_values, y=y_values)])
 
+        st.title(entity) 
         fig.update_layout(title='LC Global Ranking by Product',
-            xaxis_title='Local Committee',
-            yaxis_title='Ranking')
+            xaxis_title='Product',
+            yaxis_title='Global Rank')
 
         st.plotly_chart(fig)
 
