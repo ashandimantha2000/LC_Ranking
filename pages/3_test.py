@@ -17,7 +17,7 @@ def get_api_data(url):
 
 # Main function to run Streamlit app
 def main():
-    st.title('API Data Visualization')
+    st.title('Test API Data Visualization')
 
     # Define API URL with parameters
     api_url = 'https://analytics.api.aiesec.org/v2/applications/analyze.json'
