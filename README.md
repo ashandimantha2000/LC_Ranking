@@ -1,6 +1,8 @@
 
 # Dashboard to visualize the global ranking of LCs in Sri Lanka in exchange functions
 
+[Visit the Website]([https://docs.streamlit.io/develop/concepts/architecture/run-your-app](https://lcrankinggit-zy3vh4o35fgxzcy9fpw9lh.streamlit.app/))
+
 The proposed application intends to facilitate the visualization of the exchange function of local entities within AIESEC in Sri Lanka. By focusing on international competitors rather than solely on local entities, it offers direct assistance to these entities in identifying global competitors.
 
 By leveraging this application, the performance of AIESEC exchange functions within local entities can be significantly enhanced, leading to increased competitiveness globally. In addition, this application also provides features to analyze and compare the performance of individual entities within AIESEC in Sri Lanka.
