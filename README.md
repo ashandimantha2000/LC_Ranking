@@ -51,5 +51,5 @@ Start the server
 
 ## Documentation
 
-[Documentation](https://docs.streamlit.io/develop/concepts/architecture/run-your-appn)
+[Documentation](https://docs.streamlit.io/develop/concepts/architecture/run-your-app)
 
